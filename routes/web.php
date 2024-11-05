@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\PostController as AdminPostController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +23,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::middleware("auth")->prefix("/admin")->name("admin.")->group(function() {
+    Route::get("/posts", [AdminPostController::class, "index"])->name("posts.index");
+    Route::get("/posts/{id}", [AdminPostController::class, "show"])->name("posts.index");
+    Route::get("/posts/create/{id}", [AdminPostController::class, "create"])->name("posts.create");
+    Route::post("/posts", [AdminPostController::class, "store"])->name("posts.store");
+});
