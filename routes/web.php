@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\PostController as AdminPostController;
+use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,4 +30,11 @@ Route::middleware("auth")->prefix("/admin")->name("admin.")->group(function() {
     Route::get("/posts/{id}", [AdminPostController::class, "show"])->name("posts.index");
     Route::get("/posts/create/{id}", [AdminPostController::class, "create"])->name("posts.create");
     Route::post("/posts", [AdminPostController::class, "store"])->name("posts.store");
+});
+
+Route::middleware("auth")->prefix("/admin")->name("admin.")->group(function() {
+    Route::get("/projects", [AdminProjectController::class, "index"])->name("projects.index");
+    Route::get("/projects/{id}", [AdminProjectController::class, "show"])->name("projects.show");
+    Route::get("projects/create/{id}", [AdminProjectController::class, "create"])->name("projects.create");
+    Route::post("/projects", [AdminProjectController::class, "store"])->name("projects.store");
 });
