@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -12,7 +13,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        //
+        $projects = Project::all();
+        return view("admin.projects.index", compact("project"));
     }
 
     /**
@@ -20,7 +22,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view("admin.projects.create");
     }
 
     /**
@@ -28,7 +30,11 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate();
+
+        $project = Project::create(); // da usare se compilate le fillable nel Model(da fare)
+
+        return redirect()->route("admin.projects.index");
     }
 
     /**
@@ -36,7 +42,8 @@ class ProjectController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $project = Project::findOrFail($id);
+        return view("admin.projects.show", compact("project"));
     }
 
     /**
