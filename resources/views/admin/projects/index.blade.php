@@ -22,9 +22,10 @@
                 <td>{{ $project->name }}</td>
                 <td>{{ $project->author }}</td>
                 <td>{{ $project->description }}</td>
-                <td><a href="/admin/projects/{{$project->id}}" class="btn btn-sm btn-primary mt-2">Vedi dettagli</a></td>
-
-              </tr>
+                <td>
+                    <a href="/admin/projects/{{$project->id}}" class="btn btn-sm btn-primary mt-2">Vedi dettagli</a>
+                </td>
+            </tr>
 
             @empty
                 <h1>No Projects available...</h1>

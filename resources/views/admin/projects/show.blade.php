@@ -3,9 +3,9 @@
 @section("content")
 
     <div class="container">
-        <div class="card">
-            <span>Nome progetto: {{ $project->id }} </span>
-            <h2> {{ $project->name }} </h2>
+        <div class="card p-1">
+            <span>{{ $project->id }} </span>
+            <h2>Nome progetto: {{ $project->name }} </h2>
             <h3>Autore: {{ $project->author }} </h3>
             <p>
                 <strong>Descrizione:</strong>
