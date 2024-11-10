@@ -24,6 +24,7 @@
                 <td>{{ $project->description }}</td>
                 <td>
                     <a href="/admin/projects/{{$project->id}}" class="btn btn-sm btn-primary mt-2">Vedi dettagli</a>
+                    <a href="/admin/projects/{{$project->id}}/edit" class="btn btn-sm btn-success mt-2">Modifica</a>
                 </td>
             </tr>
 

@@ -11,6 +11,9 @@
                 <strong>Descrizione:</strong>
                 {{ $project->description }}
             </p>
+            <div>
+                <a href="/admin/projects/{{$project->id}}/edit" class="btn btn-sm btn-success mt-2">Modifica</a>
+            </div>
 
         </div>
     </div>
