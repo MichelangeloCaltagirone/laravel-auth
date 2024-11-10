@@ -11,6 +11,7 @@
             <th scope="col">Project Name</th>
             <th scope="col">Author Name</th>
             <th scope="col">Description</th>
+            <th scope="col">Operations</th>
           </tr>
         </thead>
 
@@ -21,6 +22,8 @@
                 <td>{{ $project->name }}</td>
                 <td>{{ $project->author }}</td>
                 <td>{{ $project->description }}</td>
+                <td><a href="/admin/projects/{{$project->id}}" class="btn btn-sm btn-primary mt-2">Vedi dettagli</a></td>
+
               </tr>
 
             @empty
