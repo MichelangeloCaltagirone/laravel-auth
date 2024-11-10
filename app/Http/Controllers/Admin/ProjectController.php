@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectsRequest;
+use App\Http\Requests\UpdateProjectsRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
 
@@ -60,15 +61,28 @@ class ProjectController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $project = Project::findOrFail($id);
+
+        return view("admin.projects.edit", compact("project"));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateProjectsRequest $request, string $id)
     {
-        //
+        $request->validated();
+
+        $newData = $request->all();
+
+        $project = Project::findOrFail($id);
+        $project->name = $newData["name"];
+        $project->author = $newData["author"];
+        $project->description = $newData["description"];
+
+        $project->save();
+
+        return redirect()->route("admin.projects.show", [ "id"=> $project->id] );
     }
 
     /**

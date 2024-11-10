@@ -34,7 +34,10 @@ Route::middleware("auth")->prefix("/admin")->name("admin.")->group(function() {
 
 Route::middleware("auth")->prefix("/admin")->name("admin.")->group(function() {
     Route::get("/projects", [AdminProjectController::class, "index"])->name("projects.index");
+    Route::put("/projects/{id}", [AdminProjectController::class, "update"])->name("projects.update");
     Route::get("projects/create", [AdminProjectController::class, "create"])->name("projects.create");
     Route::post("/projects", [AdminProjectController::class, "store"])->name("projects.store");
+    Route::get("/projects/{id}/edit", [AdminProjectController::class, "edit"])->name("projects.edit");
     Route::get("/projects/{id}", [AdminProjectController::class, "show"])->name("projects.show");
 });
+
