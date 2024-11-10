@@ -39,5 +39,5 @@ Route::middleware("auth")->prefix("/admin")->name("admin.")->group(function() {
     Route::post("/projects", [AdminProjectController::class, "store"])->name("projects.store");
     Route::get("/projects/{id}/edit", [AdminProjectController::class, "edit"])->name("projects.edit");
     Route::get("/projects/{id}", [AdminProjectController::class, "show"])->name("projects.show");
+    Route::delete("/projects/{id}", [AdminProjectController::class, "destroy"])->name("projects.delete");
 });
-

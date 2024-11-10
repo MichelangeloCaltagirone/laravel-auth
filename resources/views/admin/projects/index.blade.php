@@ -25,6 +25,15 @@
                 <td>
                     <a href="/admin/projects/{{$project->id}}" class="btn btn-sm btn-primary mt-2">Vedi dettagli</a>
                     <a href="/admin/projects/{{$project->id}}/edit" class="btn btn-sm btn-success mt-2">Modifica</a>
+                    <form action="{{ route("admin.projects.delete", $project->id) }}" method="POST" class="d-inline">
+                        @method("DELETE")
+                        @csrf
+
+                        <button type="submit" class="btn btn-sm btn-warning mt-2">
+                            Elimina
+                        </button>
+
+                    </form>
                 </td>
             </tr>
 
